@@ -33,6 +33,9 @@ class PopulationHandler:
             if areWeCool:
                 break
 
+    def mutate(self):
+        pass
+
 
 if __name__ == '__main__':
     p = PopulationHandler(10)
