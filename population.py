@@ -2,8 +2,9 @@ import unit
 import physics
 
 
-class PopulationHandler:
+class populationHandler:
     def __init__(self, size):
+        """ This class handles the populations, generates the generations."""
         self.generations = []
         self.generations.append([unit.Unit(-10, 10, randFitness=True) for x in range(size)])
         self.pHandler = physics.physicsHandler(1,1)
@@ -20,6 +21,11 @@ class PopulationHandler:
 
         self.bubbleSort(generation)
 
+    def birthNew(self, oldGen):
+        """ This method gives birth to the new generation."""
+        newGen = []
+
+        return newGen
 
     def bubbleSort(self, gen):
         """ This method goes through a generation and swaps two units in the list if they are in the wrong order. """
@@ -33,12 +39,10 @@ class PopulationHandler:
             if areWeCool:
                 break
 
-    def mutate(self):
-        pass
 
 
 if __name__ == '__main__':
-    p = PopulationHandler(10)
+    p = populationHandler(10)
     p.newGeneration()
     for unit in p.generations[0]:
         print(unit.fitness)
