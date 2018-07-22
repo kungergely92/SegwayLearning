@@ -17,8 +17,6 @@ class physicsHandler:
     def calculateFitness(self, unit):
         """ Calculates the fitness of a unit. """
 
-
-
     def rungeKutta4(self):
         """ This method applies the rungekutta method to step. """
         pass
