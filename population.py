@@ -1,13 +1,16 @@
-import unit
-import physics
-
+from unit import unit
+from physics import physicsHandler
+import random
 
 class populationHandler:
-    def __init__(self, size):
+    def __init__(self):
         """ This class handles the populations, generates the generations."""
         self.generations = []
-        self.generations.append([unit.Unit(-10, 10, randFitness=True) for x in range(size)])
-        self.pHandler = physics.physicsHandler(1,1)
+        self.pHandler = physicsHandler(1,1)
+
+    def initFirstGen(self, size):
+        """ Initialize first generation. """
+        self.generations.append([unit([random.randint(-10, 10) for x in range(4)]) for x in range(size)])
 
 
     def newGeneration(self, generation=None):
@@ -21,11 +24,18 @@ class populationHandler:
 
         self.bubbleSort(generation)
 
-    def birthNew(self, oldGen):
+    def fuckFest(self, oldGen):
         """ This method gives birth to the new generation."""
         newGen = []
 
         return newGen
+
+    def fuck(self, parent_1, parent_2):
+        """ This method mixes the genes of the parents by a certain rule. """
+        newGenes = None # yet
+
+        child = unit(newGenes)
+        return child
 
     def bubbleSort(self, gen):
         """ This method goes through a generation and swaps two units in the list if they are in the wrong order. """
@@ -42,7 +52,10 @@ class populationHandler:
 
 
 if __name__ == '__main__':
-    p = populationHandler(10)
+    p = populationHandler()
+    p.initFirstGen(10)
+    for unit in p.generations[0]:
+        unit.fitness = random.randint(-10, 10)
     p.newGeneration()
     for unit in p.generations[0]:
         print(unit.fitness)

@@ -10,7 +10,6 @@ class physicsHandler:
 
     def simulate(self, unit):
         """ Simulates the control process with one unit. """
-        # TODO implement genes
         res = deepcopy(self.initCond)
         B = unit.genes
 

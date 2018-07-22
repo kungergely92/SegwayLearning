@@ -1,11 +1,11 @@
 import random
 
-class Unit:
-    def __init__(self, minValue, maxValue, randFitness=False):
+class unit:
+    def __init__(self, genes):
         '''This class represents one individual of the population'''
-        self.genes = [random.randint(minValue, maxValue) for x in range(4)]
-        self.fitness = random.randint(minValue, maxValue) if randFitness else None
+        self.genes = genes
+        self.fitness = None
 
 if __name__ == '__main__':
-    U1 = Unit(-10, 10)
+    U1 = unit([random.randint(-10, 10) for x in range(4)])
     print(U1.genes)
