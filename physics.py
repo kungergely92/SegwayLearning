@@ -36,7 +36,7 @@ class physicsHandler:
 
         ctrl_f = (B[0] * res[0] + B[1] * res[1]) / m
         eq_1 = ((-2 * l * res[3] * res[3] + 3 * g * np.cos(res[2]) * np.sin(res[2])) /
-                (-4 + 3 * np.cos(res[2] * cos(res[2]))))
+                (-4 + 3 * np.cos(res[2] * np.cos(res[2]))))
         eq_2 = (6 * (-2 * g + l * res[3] * res[3] * np.cos(res[2])) * np.sin(res[2]) /
                 (l * (-5 * np.cos(2 * res[2]))))
 
@@ -64,7 +64,7 @@ class physicsHandler:
 
     def run(self):
         """ This method calls the 'rungeKutta4' method 'steps' times"""
-        
+
         n = 0
         while n <= self.steps:
 
