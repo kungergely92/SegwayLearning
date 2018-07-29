@@ -21,10 +21,13 @@ class physicsHandler:
 
     def simulate(self, steps):
         """ Simulates the control process with one unit. """
+        res = deepcopy(self.initCond)
+        B = unit.genes
 
-
-    def calculateFitness(self):
+    def calculateFitness(self, unit):
         """ Calculates the fitness of a unit. """
+        # TODO gets a unit and returns its fitness value, or just changes its fitness value (member of unit class)
+        # return fitness
 
     def sys_equation(self, res):
 

@@ -23,17 +23,18 @@ class populationHandler:
                 self.pHandler.calculateFitness(unit)
 
         self.bubbleSort(generation)
+        # TODO we now have a organized generation and need to generate a new one
 
     def fuckFest(self, oldGen):
         """ This method gives birth to the new generation."""
         newGen = []
-
+        # TODO implement
         return newGen
 
     def fuck(self, parent_1, parent_2):
         """ This method mixes the genes of the parents by a certain rule. """
         newGenes = None # yet
-
+        # TODO implement
         child = unit(newGenes)
         return child
 

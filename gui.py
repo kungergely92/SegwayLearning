@@ -1,7 +1,7 @@
 import sys, os
 from PyQt5.QtWidgets import (QApplication, QWidget, QMainWindow,
                              QVBoxLayout, QHBoxLayout, QPushButton,
-                             QLineEdit)
+                             QLineEdit, QLabel)
 from PyQt5.QtCore import (pyqtSlot)
 
 
@@ -18,11 +18,15 @@ class populationWidget(QWidget):
     def buildGUI(self):
         vBoxMain = QVBoxLayout()
 
+        params = ['Px', r'Dx', r'Pfi', r'Dfi']
         self.LE_paramLimits = []
         for i in range(4):
+            hBox = QHBoxLayout()
+            hBox.addWidget(QLabel(params[i]))
             self.LE_paramLimits.append(QLineEdit())
-            self.LE_paramLimits[i].setPlaceholderText('min-max')
-            vBoxMain.addWidget(self.LE_paramLimits[i])
+            self.LE_paramLimits[i].setPlaceholderText('min:max')
+            hBox.addWidget(self.LE_paramLimits[i])
+            vBoxMain.addLayout(hBox)
 
 
 
@@ -37,9 +41,9 @@ class populationWidget(QWidget):
         limits_B =  []
         for b in self.LE_paramLimits:
             try:
-                limits_B.append( [float(x) for x in b.text().split('-')] )
+                limits_B.append( [float(x) for x in b.text().split(':')] )
             except:
-                pass
+                limits_B.append([None, None])
 
         print(limits_B)
 
