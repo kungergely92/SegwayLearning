@@ -38,7 +38,9 @@ class populationHandler:
         return child
 
     def bubbleSort(self, gen):
-        """ This method goes through a generation and swaps two units in the list if they are in the wrong order. """
+        """ This method goes through a generation and swaps two units in the list if they
+            are in the wrong order. The result is the sorted array with the most fitted unit last.
+        """
         areWeCool = True
         n = len(gen)
         for j in range(n):
