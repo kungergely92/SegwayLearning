@@ -28,13 +28,13 @@ class populationHandler:
     def fuckFest(self, oldGen):
         """ This method gives birth to the new generation."""
         newGen = []
-        # TODO implement
+        # TODO implement fuckFest
         return newGen
 
     def fuck(self, parent_1, parent_2):
         """ This method mixes the genes of the parents by a certain rule. """
         newGenes = None # yet
-        # TODO implement
+        # TODO implement fuck
         child = unit(newGenes)
         return child
 
