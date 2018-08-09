@@ -36,15 +36,22 @@ class physicsHandler:
         g = self.sysParams[2]
 
         B = self.ctrlParams
+        ctrl_force = 0
 
-        ctrl_f = (B[0] * res[0] + B[1] * res[1]) / m
-        eq_1 = ((-2 * l * res[3] * res[3] + 3 * g * np.cos(res[2]) * np.sin(res[2])) /
-                (-4 + 3 * np.cos(res[2] * np.cos(res[2]))))
+        for i in range(len(B)):
+            ctrl_force += B[i]*res[i]
+
+        eq_11 = -4*l*m*res[3]*res[3]*np.sin(res[2])
+        eq_12 = 3*g*m*np.sin(2*res[2])
+        den = -5+3*np.cos(2*res[2])
+
+        eq_1 = ((eq_11 + eq_12 - 5*ctrl_force + 3*np.cos(2*res[2])*ctrl_force) /
+                (m*den))
         eq_2 = (6 * (-2 * g + l * res[3] * res[3] * np.cos(res[2])) * np.sin(res[2]) /
-                (l * (-5 * np.cos(2 * res[2]))))
+                (l * den))
 
         return np.array([res[1],
-                        ctrl_f + eq_1,
+                        eq_1,
                         res[3],
                         eq_2])
 
@@ -79,10 +86,12 @@ if __name__ == '__main__':
 
     from unit import unit
 
-    u = unit([0.7, 0.5])
+    u = unit([0.7, 0.5, 0.3, 0.3])
     ic = [0, 0, 0.5, 0]
     params = [1, 1, 9.81]
     dt = 0.01
     steps = 5
 
     p = physicsHandler(ic, params, u, dt, steps)
+
+    p.run()
